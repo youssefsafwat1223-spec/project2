@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مجموعة التدريب التنفيذي - الصفحة الرئيسية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --dark-green: #0a3d2e;
+        --medium-green: #1a5c47;
+        --light-green: #2a7a5f;
+        --accent-lime: hsl(73, 98%, 49%);
+        --accent-gold: #FFD700;
+        --white: #ffffff;
+        --light-gray: #f5f5f5;
+        --text-gray: #9ca3af;
+    }
+
+    body {
+        font-family: 'Cairo', sans-serif;
+        direction: rtl;
+        overflow-x: hidden;
+        background: var(--dark-green);
+        color: var(--white);
+    }
+
+    /* الخلفية المائلة */
+    .diagonal-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(135deg, 
+            var(--dark-green) 30%,
+            var(--medium-green) 60%,
+            var(--light-green) 100%
+        );
+        overflow: hidden;
+    }
+
+    /* خطوط مائلة ناعمة */
+    .diagonal-lines {
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background-image: repeating-linear-gradient(
+            45deg,
+            rgba(198,255,0,0.02),
+            rgba(198,255,0,0.02) 35px,
+            rgba(198,255,0,0.05) 36px
+        );
+        animation: moveDiagonal 40s linear infinite;
+        opacity: 0.7;
+    }
+
+    @keyframes moveDiagonal {
+        0% { transform: translate(0, 0) rotate(0deg); }
+        50% { transform: translate(50px, 50px) rotate(1deg); }
+        100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    /* التوهجات المتعددة */
+    .glow-effect {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.6;
+    }
+
+    .glow-1 {
+        top: -150px;
+        right: -200px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(198,255,0,0.2) 0%, transparent 70%);
+        animation: floatGlow1 25s ease-in-out infinite;
+    }
+
+    .glow-2 {
+        bottom: -180px;
+        left: -180px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+        animation: floatGlow2 30s ease-in-out infinite;
+    }
+
+    .glow-3 {
+        top: 30%;
+        left: 10%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+        animation: floatGlow3 35s ease-in-out infinite;
+    }
+
+    @keyframes floatGlow1 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(120px, -80px) scale(1.1); }
+    }
+
+    @keyframes floatGlow2 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(-100px, 100px) scale(1.05); }
+    }
+
+    @keyframes floatGlow3 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(50px, -50px) scale(1.08); }
+    }
+
+    /* تأثير shimmer خفيف */
+    .shimmer {
+        position: absolute;
+        top: 0;
+        left: -50%;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(120deg, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.05) 70%);
+        animation: shimmerMove 20s linear infinite;
+    }
+
+    @keyframes shimmerMove {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+
+        /* === التعديلات الجديدة === */
+
+        /* Header معدّل */
+        .header {
+            position: relative;
+            background: rgba(10, 61, 46, 0.95);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+
+        .header-logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-logo-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--accent-lime);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-green);
+            font-weight: 900;
+            font-size: 1.3rem;
+        }
+
+        .header-small-image {
+            width: 100px;
+            height: 60px;
+            border-radius: 0px;
+            object-fit: none;
+        }
+
+        .header-banner {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: url('https://via.placeholder.com/1200x200/1a5c47/ffffff?text=بانر+رئيسي') center/cover no-repeat;
+            z-index: 999;
+        }
+
+        /* القسم الثلاثي */
+        .three-columns-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .three-columns {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .column {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(198, 255, 0, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .column-title {
+            font-size: 1.5rem;
+            color: var(--accent-lime);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .column-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .column-item:last-child {
+            border-bottom: none;
+        }
+
+        .column-item:hover {
+            color: var(--accent-lime);
+        }
+
+        /* قسم الأخبار */
+        .news-section {
+            padding: 2rem 0;
+        }
+
+        .news-item h3 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        /* شريط الخدمات */
+        .services-strip {
+            padding: 2rem 2rem 4rem;
+            background:rgba(255, 255, 255, 0);
+        }
+
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .service-btn {
+            background: var(--medium-green);
+            color: var(--white);
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .service-btn:hover {
+            background: var(--accent-lime);
+            color: var(--dark-green);
+            transform: translateY(-3px);
+        }
+
+        /* القسم المؤسسي السفلي */
+        .institutional-section {
+            padding: 4rem 2rem;
+            background: var(--dark-green);
+        }
+
+        .institutional-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .institutional-card {
+            background: var(--medium-green);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .institutional-card:hover {
+            background: var(--accent-lime);
+            color: var(--dark-green);
+            transform: translateY(-5px);
+        }
+        /* Hero Section */
+        .hero {
+            min-height: 30vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 2000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 6rem;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: var(--white);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-title span {
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-gray);
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            font-weight: 400;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn {
+            padding: 1.3rem 3rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent-lime);
+            color: var(--dark-green);
+            box-shadow: 0 10px 30px rgba(198, 255, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #d4ff33;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(198, 255, 0, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 6rem 2rem;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(198, 255, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .stat-item:hover {
+            background: rgba(198, 255, 0, 0.1);
+            border-color: var(--accent-lime);
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--accent-lime);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        /* Platforms Section */
+        .platforms-section {
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            font-weight: 400;
+        }
+
+        .platforms-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .platform-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(198, 255, 0, 0.1);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .platform-card:hover {
+            background: rgba(198, 255, 0, 0.1);
+            border-color: var(--accent-lime);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 60px rgba(198, 255, 0, 0.2);
+        }
+
+        .platform-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 20px rgba(198, 255, 0, 0.5));
+        }
+
+        .platform-card h3 {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .platform-card p {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        /* Hierarchy Section */
+        .hierarchy-section {
+            padding: 6rem 2rem;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .hierarchy-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .hierarchy-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(198, 255, 0, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem 3rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hierarchy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent-lime);
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+        }
+
+        .hierarchy-card:hover {
+            background: rgba(198, 255, 0, 0.1);
+            border-color: var(--accent-lime);
+            transform: translateX(-10px);
+        }
+
+        .hierarchy-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .hierarchy-card h3 {
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .hierarchy-card p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 6rem 2rem;
+        }
+
+        .newsletter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(198, 255, 0, 0.1);
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            text-align: center;
+        }
+
+        .newsletter-container h2 {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .newsletter-container p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1.3rem 2rem;
+            border: 2px solid rgba(198, 255, 0, 0.2);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            font-size: 1.05rem;
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--accent-lime);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .newsletter-input::placeholder {
+            color: var(--text-gray);
+        }
+/* صور الأخبار — مستطيلة وتتكيف مع الجوال */
+.news-image-container {
+    width: 100%;
+    height: 160px; /* ارتفاع ثابت يناسب الشاشات */
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.news-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* يقص الصورة من الأطراف ويحافظ على النسبة */
+    object-position: center; /* يركز على وسط الصورة */
+    transition: transform 0.3s ease;
+}
+
+.news-image:hover {
+    transform: scale(1.05);
+}
+.news-slider {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+}
+
+.news-item {
+    min-width: 100%;
+    flex-shrink: 0;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+/* نقاط التحكم */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.dot.active {
+    background: var(--accent-lime);
+}
+        /* Footer */
+        .footer {
+            padding: 5rem 2rem 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(198, 255, 0, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            color: var(--accent-lime);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-section p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-lime);
+            transform: translateX(-5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(198, 255, 0, 0.1);
+            border: 1px solid rgba(198, 255, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-lime);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent-lime);
+            color: var(--dark-green);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(198, 255, 0, 0.1);
+            color: var(--text-gray);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 85px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 61, 46, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid rgba(198, 255, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input {
+                min-width: 100%;
+            }
+        }
+        /* === بقية الأنماط من الكود الأصلي تبقى كما هي === */
+        /* Hero, Stats, Platforms, Hierarchy, Newsletter, Footer */
+        /* ... (تم حذفها هنا للاختصار، لكنها موجودة في الكود الكامل أدناه) ... */
+    </style>
+</head>
+<body>
+    <!-- الخلفية -->
+    <div class="diagonal-bg">
+        <div class="diagonal-lines"></div>
+        <div class="glow-effect glow-1"></div>
+        <div class="glow-effect glow-2"></div>
+    </div>
+
+    <!-- الهيدر المعدّل -->
+    <header class="header">
+        <div class="header-logo-section">
+            <div class="header-logo-icon">TE</div>
+            <span>مجموعة التدريب التنفيذي</span>
+        </div>
+        <img src="1.svg" alt="صورة صغيرة" class="header-small-image">
+    </header>
+    <div class="header-banner"></div>
+
+    <!-- الهيرو القديم -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span>نطلق طاقات</span>
+                <span>التميز والإبداع</span>
+            </h1>
+            <p class="hero-subtitle">
+                التزامنا ببناء القدرات وتطوير الكفاءات الوطنية يمهد الطريق نحو مستقبل أكثر إشراقاً. 
+                انضم إلينا في رحلة نحو مستقبل تتحول فيه برامجنا التدريبية المتقدمة إلى واقع ملموس يدعم رؤية المملكة 2030.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- القسم الثلاثي الجديد -->
+    <section class="three-columns-section">
+        <div class="three-columns">
+            <!-- العمود الأيسر -->
+            <div class="column">
+                <h2 class="column-title">القيادة</h2>
+                <div class="column-item" onclick="location.href='ceo-message.html'">كلمة الرئيس التنفيذي</div>
+                <div class="column-item" onclick="location.href='vision-mission.html'">الرؤية والرسالة</div>
+                <div class="column-item" onclick="location.href='org-structure.html'">الهيكل التنظيمي</div>
+                <div class="column-item" onclick="location.href='executives.html'">الرؤساء التنفيذيون</div>
+            </div>
+
+        <!-- العمود الأوسط (الأخبار) -->
+<!-- العمود الأوسط (الأخبار) -->
+<!-- العمود الأوسط (الأخبار) -->
+<div class="column news-section">
+    <h2 class="column-title">الأخبار</h2>
+    <div class="news-slider" id="autoSlider">
+        <div class="news-item">
+            <div class="news-image-container">
+                <img src="1-1826455.webp" alt="ورشة عمل جديدة" class="news-image">
+            </div>
+            <h3>ورشة عمل جديدة</h3>
+            <p>انطلقت اليوم ورشة "القيادة الرقمية" بمشاركة نخبة من الخبراء.</p>
+        </div>
+        <div class="news-item">
+            <div class="news-image-container">
+                <img src="1-1826455.webp" alt="شراكة استراتيجية" class="news-image">
+            </div>
+            <h3>شراكة استراتيجية</h3>
+            <p>توقيع مذكرة تفاهم مع جامعة الملك سعود لدعم التدريب المهني.</p>
+        </div>
+        <div class="news-item">
+            <div class="news-image-container">
+                <img src="1-1826455.webp" alt="شهادة اعتماد" class="news-image">
+            </div>
+            <h3>شهادة اعتماد</h3>
+            <p>حصلنا على شهادة ISO 21001:2018 للجودة في التعليم.</p>
+        </div>
+    </div>
+
+    <!-- مؤشرات الشرائح (اختياري) -->
+    <div class="slider-dots" style="text-align:center; margin-top:1.5rem;">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+    </div>
+</div>
+
+            <!-- العمود الأيمن -->
+            <div class="column">
+                <h2 class="column-title">روابط سريعة</h2>
+                <div class="column-item" onclick="location.href='group-vision.html'">رؤية المجموعة</div>
+                <div class="column-item" onclick="location.href='official-site.html'">الموقع الرئيسي</div>
+                <div class="column-item" onclick="location.href='executive-structure.html'">الهيكل التنظيمي التنفيذي</div>
+                <div class="column-item" onclick="location.href='email.html'">البريد الإلكتروني</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- شريط الخدمات -->
+    <section class="services-strip">
+        <div class="services-container">
+            <div class="service-btn" onclick="location.href='appointments.html'">المواعيد</div>
+            <div class="service-btn" onclick="location.href='resources-system.html'">نظام الموارد</div>
+            <div class="service-btn" onclick="location.href='organizational-followup.html'">المتابعة التنظيمية</div>
+            <div class="service-btn" onclick="location.href='attendance.html'">الحضور والانصراف</div>
+            <div class="service-btn" onclick="location.href='management-system.html'">الإدارة العليا</div>
+            <div class="service-btn" onclick="location.href='science-platform.html'">منصة علم</div>
+            <div class="service-btn" onclick="location.href='meetings.html'">منصة اجتماعات</div>
+        </div>
+    </section>
+
+    <!-- القسم المؤسسي السفلي -->
+    <section class="institutional-section">
+        <div class="institutional-container">
+            <div class="institutional-card" onclick="location.href='academic-accreditation.html'">الاعتماد الأكاديمي</div>
+            <div class="institutional-card" onclick="location.href='courses.html'">الدورات التدريبية</div>
+            <div class="institutional-card" onclick="location.href='electronic-systems.html'">الأنظمة الإلكترونية</div>
+            <div class="institutional-card" onclick="location.href='important-links.html'">روابط هامة</div>
+        </div>
+    </section>
+
+    <!-- باقي الأقسام من الكود الأصلي (Stats, Platforms, Hierarchy, Newsletter, Footer) -->
+    <!-- ... تم الاحتفاظ بها كما هي في الكود الكامل ... -->
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number" data-target="10000">0</div>
+                <div class="stat-label">متدرب متميز</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="250">0</div>
+                <div class="stat-label">برنامج تدريبي</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="95">0</div>
+                <div class="stat-label">% معدل الرضا</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="15">0</div>
+                <div class="stat-label">شريك استراتيجي</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platforms Section -->
+    <section class="platforms-section">
+        <div class="section-header">
+            <h2 class="section-title">منصاتنا الرقمية</h2>
+            <p class="section-subtitle">أنظمة متكاملة لإدارة العمليات التدريبية والإدارية</p>
+        </div>
+        <div class="platforms-grid">
+            <div class="platform-card">
+                <div class="platform-icon">💼</div>
+                <h3>منصة الاجتماعات</h3>
+                <p>إدارة وتنظيم الاجتماعات الإلكترونية</p>
+            </div>
+            <div class="platform-card">
+                <div class="platform-icon">📚</div>
+                <h3>منصة علم</h3>
+                <p>نظام إدارة التعلم الإلكتروني</p>
+            </div>
+            <div class="platform-card">
+                <div class="platform-icon">⚖️</div>
+                <h3>نظام الإدارة العليا</h3>
+                <p>القرارات والموافقات الإدارية</p>
+            </div>
+            <div class="platform-card">
+                <div class="platform-icon">⏰</div>
+                <h3>الحضور والانصراف</h3>
+                <p>إدارة حضور الموظفين والمتدربين</p>
+            </div>
+            <div class="platform-card">
+                <div class="platform-icon">📊</div>
+                <h3>المتابعة التنظيمية</h3>
+                <p>متابعة الأداء والمهام</p>
+            </div>
+            <div class="platform-card">
+                <div class="platform-icon">👥</div>
+                <h3>نظام الموارد</h3>
+                <p>إدارة الموارد البشرية</p>
+            </div>
+            <div class="platform-card">
+                <div class="platform-icon">📅</div>
+                <h3>نظام المواعيد</h3>
+                <p>حجز وإدارة المواعيد</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hierarchy Section -->
+    <section class="hierarchy-section">
+        <div class="section-header">
+            <h2 class="section-title">الهيكل التنظيمي</h2>
+            <p class="section-subtitle">تعرف على قيادتنا وهيكلنا الإداري</p>
+        </div>
+        <div class="hierarchy-container">
+            <div class="hierarchy-card" onclick="location.href='ceo-message.html'">
+                <h3>كلمة الرئيس التنفيذي</h3>
+                <p>رؤيتنا وتطلعاتنا نحو المستقبل</p>
+            </div>
+            <div class="hierarchy-card" onclick="location.href='vision-mission.html'">
+                <h3>الرؤية والرسالة</h3>
+                <p>قيمنا وأهدافنا الاستراتيجية</p>
+            </div>
+            <div class="hierarchy-card" onclick="location.href='org-structure.html'">
+                <h3>الهيكل التنظيمي</h3>
+                <p>تنظيمنا الإداري والتنفيذي</p>
+            </div>
+            <div class="hierarchy-card" onclick="location.href='executives.html'">
+                <h3>الرؤساء التنفيذيين</h3>
+                <p>قيادتنا المتميزة</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <h2>ابق على اطلاع بآخر التحديثات</h2>
+            <p>اشترك في نشرتنا الإخبارية للحصول على آخر الأخبار والعروض التدريبية والمقالات المتخصصة في التطوير المهني.</p>
+            <form class="newsletter-form" onsubmit="return false;">
+                <input type="email" class="newsletter-input" placeholder="أدخل بريدك الإلكتروني...">
+                <button type="submit" class="btn btn-primary">اشترك الآن</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>مجموعة التدريب التنفيذي</h3>
+                <p>نحن إحدى المؤسسات الرائدة في مجال التدريب والتطوير المهني في المملكة العربية السعودية.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="courses.html">الدورات التدريبية</a></li>
+                    <li><a href="executives.html">المدراء التنفيذيون</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                    <li><a href="#">الشهادات والاعتمادات</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <p><i class="fas fa-map-marker-alt"></i> طريق الملك فهد، حي العليا، الرياض 12211</p>
+                <p><i class="fas fa-phone"></i> 920000000</p>
+                <p><i class="fas fa-envelope"></i> info@company.sa</p>
+                <p><i class="fas fa-clock"></i> الأحد - الخميس: 8:00 ص - 5:00 م</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>الاعتمادات</h3>
+                <ul>
+                    <li><a href="#">هيئة تقويم التعليم والتدريب</a></li>
+                    <li><a href="#">المؤسسة العامة للتدريب التقني</a></li>
+                    <li><a href="#">ISO 9001:2015</a></li>
+                    <li><a href="#">ISO 21001:2018</a></li>
+                    <li><a href="#">PMI Authorized Partner</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 مجموعة التدريب التنفيذي. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        // نفس الـ JavaScript من الكود الأصلي
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + (element.nextElementSibling.textContent.includes('%') ? '' : '+');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.stat-number');
+                    counters.forEach(counter => {
+                        if (counter.textContent === '0') {
+                            animateCounter(counter);
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+ // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Header Scroll Effect
+        let lastScroll = 0;
+        const header = document.querySelector('.header');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.background = 'rgba(10, 61, 46, 0.98)';
+                header.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.3)';
+            } else {
+                header.style.background = 'rgba(10, 61, 46, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const slider = document.getElementById('autoSlider');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
+        const totalItems = document.querySelectorAll('.news-item').length;
+        let autoSlideInterval;
+
+        function goToSlide(index) {
+            if (index >= totalItems) currentIndex = 0;
+            else if (index < 0) currentIndex = totalItems - 1;
+            else currentIndex = index;
+
+            // تحريك الشرائح
+            const offset = -currentIndex * 100;
+            slider.style.transform = `translateX(${offset}%)`;
+
+            // تحديث النقاط
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        function nextSlide() {
+            goToSlide(currentIndex + 1);
+        }
+
+        // تشغيل الانزلاق التلقائي كل 5 ثواني
+        autoSlideInterval = setInterval(nextSlide, 5000);
+
+        // عند النقر على نقطة
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                clearInterval(autoSlideInterval);
+                goToSlide(parseInt(dot.dataset.index));
+                // إعادة التشغيل بعد التفاعل
+                autoSlideInterval = setInterval(nextSlide, 5000);
+            });
+        });
+
+        // إيقاف التلقائي عند التمرير اليدوي (اختياري)
+        slider.addEventListener('mouseenter', () => {
+            clearInterval(autoSlideInterval);
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            autoSlideInterval = setInterval(nextSlide, 5000);
+        });
+    });
+        // Platform Cards Click
+        document.querySelectorAll('.platform-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('h3').textContent;
+                alert(`جاري الانتقال إلى ${title}`);
+            });
+        });
+
+        // Newsletter Form
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('.newsletter-input').value;
+                if (email) {
+                    alert('شكراً لاشتراكك! سنرسل لك آخر التحديثات قريباً.');
+                    this.querySelector('.newsletter-input').value = '';
+                }
+            });
+        }
+
+        // Add scroll reveal animation
+        const revealElements = document.querySelectorAll('.stat-item, .platform-card, .hierarchy-card');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'all 0.6s ease';
+            revealObserver.observe(element);
+        });
+        // ... باقي الـ JavaScript كما هو ...
+    </script>
+</body>
+</html>

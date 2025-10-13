@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مجموعة التدريب التنفيذي - الصفحة الرئيسية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --dark-green: #0a3d2e;
+        --medium-green: #1a5c47;
+        --light-green: #2a7a5f;
+        --accent-lime: hsl(73, 98%, 49%);
+        --accent-gold: #FFD700;
+        --white: #ffffff;
+        --light-gray: #f5f5f5;
+        --text-gray: #9ca3af;
+    }
+
+    body {
+        font-family: 'Cairo', sans-serif;
+        direction: rtl;
+        overflow-x: hidden;
+        background: var(--dark-green);
+        color: var(--white);
+    }
+
+    /* الخلفية المائلة */
+    .diagonal-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(135deg, 
+            var(--dark-green) 30%,
+            var(--medium-green) 60%,
+            var(--light-green) 100%
+        );
+        overflow: hidden;
+    }
+
+    /* خطوط مائلة ناعمة */
+    .diagonal-lines {
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background-image: repeating-linear-gradient(
+            45deg,
+            rgba(198,255,0,0.02),
+            rgba(198,255,0,0.02) 35px,
+            rgba(198,255,0,0.05) 36px
+        );
+        animation: moveDiagonal 40s linear infinite;
+        opacity: 0.7;
+    }
+
+    @keyframes moveDiagonal {
+        0% { transform: translate(0, 0) rotate(0deg); }
+        50% { transform: translate(50px, 50px) rotate(1deg); }
+        100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    /* التوهجات المتعددة */
+    .glow-effect {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.6;
+    }
+
+    .glow-1 {
+        top: -150px;
+        right: -200px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(198,255,0,0.2) 0%, transparent 70%);
+        animation: floatGlow1 25s ease-in-out infinite;
+    }
+
+    .glow-2 {
+        bottom: -180px;
+        left: -180px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+        animation: floatGlow2 30s ease-in-out infinite;
+    }
+
+    .glow-3 {
+        top: 30%;
+        left: 10%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+        animation: floatGlow3 35s ease-in-out infinite;
+    }
+
+    @keyframes floatGlow1 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(120px, -80px) scale(1.1); }
+    }
+
+    @keyframes floatGlow2 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(-100px, 100px) scale(1.05); }
+    }
+
+    @keyframes floatGlow3 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(50px, -50px) scale(1.08); }
+    }
+
+    /* تأثير shimmer خفيف */
+    .shimmer {
+        position: absolute;
+        top: 0;
+        left: -50%;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(120deg, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.05) 70%);
+        animation: shimmerMove 20s linear infinite;
+    }
+
+    @keyframes shimmerMove {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 61, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(198, 255, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--accent-lime);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-green);
+            font-weight: 900;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-lime);
+        }
+
+        .header-btn {
+            background: transparent;
+            border: 2px solid var(--accent-lime);
+            color: var(--accent-lime);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .header-btn:hover {
+            background: var(--accent-lime);
+            color: var(--dark-green);
+        }
+
+        /* Hero */
+        .page-hero {
+            padding: 12rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 4.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-gray);
+        }
+
+        /* Message Section */
+        .message-section {
+            padding: 4rem 2rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ceo-intro {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(198, 255, 0, 0.1);
+            border-radius: 30px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .ceo-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 5px solid var(--accent-lime);
+            object-fit: cover;
+            flex-shrink: 0;
+            box-shadow: 0 10px 40px rgba(198, 255, 0, 0.3);
+        }
+
+        .ceo-info h2 {
+            font-size: 2.5rem;
+            color: var(--accent-lime);
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+
+        .ceo-info h3 {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .ceo-info p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .message-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(198, 255, 0, 0.1);
+            border-radius: 30px;
+            padding: 4rem;
+        }
+
+        .bismillah {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--accent-lime);
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .message-text {
+            font-size: 1.3rem;
+            line-height: 2.2;
+            color: var(--text-gray);
+            text-align: justify;
+            margin-bottom: 2rem;
+        }
+
+        .message-text p {
+            margin-bottom: 2rem;
+        }
+
+        .quote-box {
+            background: rgba(198, 255, 0, 0.1);
+            border-right: 5px solid var(--accent-lime);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+
+        .quote-box p {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--white);
+            line-height: 2;
+        }
+
+        .signature {
+            margin-top: 4rem;
+            text-align: left;
+        }
+
+        .signature-name {
+            font-size: 2rem;
+            color: var(--accent-lime);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .signature-title {
+            font-size: 1.3rem;
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .signature-date {
+            font-size: 1rem;
+            color: var(--text-gray);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(198, 255, 0, 0.1);
+            text-align: center;
+            color: var(--text-gray);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .ceo-intro {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .message-content {
+                padding: 2rem;
+            }
+
+            .message-text {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="diagonal-bg">
+        <div class="diagonal-lines"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">TE</div>
+                <span>مجموعة التدريب التنفيذي</span>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="courses.html">الدورات</a></li>
+                    <li><a href="executives.html">المدراء</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="header-btn">تواصل معنا</a>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1 class="page-title">كلمة الرئيس التنفيذي</h1>
+        <p class="page-subtitle">رؤيتنا وتطلعاتنا نحو مستقبل أفضل</p>
+    </section>
+
+    <!-- Message Section -->
+    <section class="message-section">
+        <div class="ceo-intro">
+            <img src="https://ui-avatars.com/api/?name=Ahmed+AlSaeed&size=250&background=c6ff00&color=0a3d2e&bold=true&font-size=0.35" alt="أحمد السعيد" class="ceo-image">
+            <div class="ceo-info">
+                <h2>المهندس أحمد محمد السعيد</h2>
+                <h3>الرئيس التنفيذي</h3>
+                <p>قائد استراتيجي بخبرة تمتد لأكثر من 15 عاماً في مجال التدريب والتطوير المؤسسي. حاصل على دكتوراه في القيادة الاستراتيجية من جامعة أكسفورد.</p>
+            </div>
+        </div>
+
+        <div class="message-content">
+            <div class="bismillah">بسم الله الرحمن الرحيم</div>
+            
+            <div class="message-text">
+                <p>السلام عليكم ورحمة الله وبركاته،</p>
+
+                <p>يسرني أن أرحب بكم في مجموعة التدريب التنفيذي، إحدى المؤسسات الرائدة في مجال التدريب والتطوير المهني في المملكة العربية السعودية. منذ تأسيسنا عام 2015، ونحن نعمل بشغف وتفانٍ على بناء القدرات وتطوير الكفاءات الوطنية، مساهمين في تحقيق رؤية المملكة الطموحة 2030.</p>
+
+                <p>نؤمن إيماناً راسخاً بأن الاستثمار في رأس المال البشري هو الاستثمار الأمثل لتحقيق التنمية المستدامة والنمو المؤسسي. لذا، نحرص على تقديم برامج تدريبية عالية الجودة تتماشى مع أفضل الممارسات العالمية وتلبي احتياجات سوق العمل السعودي المتطور.</p>
+
+                <div class="quote-box">
+                    <p>"التميز ليس وجهة، بل رحلة مستمرة من التعلم والتطوير والابتكار"</p>
+                </div>
+
+                <p>لقد نجحنا خلال السنوات الماضية في تدريب أكثر من 10,000 متدرب من مختلف القطاعات والمستويات الإدارية، وحققنا معدل رضا يتجاوز 95%، وهو ما يعكس التزامنا بالجودة والتميز. كما حصلنا على العديد من الاعتمادات المحلية والدولية، بما في ذلك ISO 9001:2015 و ISO 21001:2018، بالإضافة إلى شراكاتنا الاستراتيجية مع أفضل الجامعات والمؤسسات العالمية.</p>
+
+                <p>نتطلع في المرحلة القادمة إلى مضاعفة جهودنا وتوسيع نطاق خدماتنا لتشمل المزيد من المدن والمناطق، مع التركيز على التحول الرقمي والابتكار في أساليب التدريب والتطوير. كما نسعى لتعزيز شراكاتنا الإقليمية والدولية لنقل أفضل الممارسات العالمية وتوطينها بما يتناسب مع بيئتنا المحلية.</p>
+
+                <p>أود أن أتوجه بالشكر والتقدير لجميع شركائنا وعملائنا الكرام على ثقتهم الغالية، ولفريق العمل المتميز في المجموعة على جهودهم الدؤوبة وإخلاصهم في العمل. كما أدعو كل من يسعى للتطور والتميز المهني للانضمام إلى أسرة مجموعة التدريب التنفيذي، حيث نعمل معاً على بناء مستقبل أكثر إشراقاً.</p>
+
+                <p>نسأل الله التوفيق والسداد في خدمة وطننا الغالي وتحقيق تطلعات قيادتنا الرشيدة.</p>
+
+                <p>والسلام عليكم ورحمة الله وبركاته،</p>
+            </div>
+
+            <div class="signature">
+                <div class="signature-name">المهندس أحمد محمد السعيد</div>
+                <div class="signature-title">الرئيس التنفيذي</div>
+                <div class="signature-date">الرياض، أكتوبر 2024</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 مجموعة التدريب التنفيذي. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        // Scroll animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.ceo-intro, .message-content').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

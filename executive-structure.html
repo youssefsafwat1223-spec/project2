@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مجموعة التدريب التنفيذي - الصفحة الرئيسية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --dark-green: #0a3d2e;
+        --medium-green: #1a5c47;
+        --light-green: #2a7a5f;
+        --accent-lime: hsl(73, 98%, 49%);
+        --accent-gold: #FFD700;
+        --white: #ffffff;
+        --light-gray: #f5f5f5;
+        --text-gray: #9ca3af;
+    }
+
+    body {
+        font-family: 'Cairo', sans-serif;
+        direction: rtl;
+        overflow-x: hidden;
+        background: var(--dark-green);
+        color: var(--white);
+    }
+
+    /* الخلفية المائلة */
+    .diagonal-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(135deg, 
+            var(--dark-green) 30%,
+            var(--medium-green) 60%,
+            var(--light-green) 100%
+        );
+        overflow: hidden;
+    }
+
+    /* خطوط مائلة ناعمة */
+    .diagonal-lines {
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background-image: repeating-linear-gradient(
+            45deg,
+            rgba(198,255,0,0.02),
+            rgba(198,255,0,0.02) 35px,
+            rgba(198,255,0,0.05) 36px
+        );
+        animation: moveDiagonal 40s linear infinite;
+        opacity: 0.7;
+    }
+
+    @keyframes moveDiagonal {
+        0% { transform: translate(0, 0) rotate(0deg); }
+        50% { transform: translate(50px, 50px) rotate(1deg); }
+        100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    /* التوهجات المتعددة */
+    .glow-effect {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.6;
+    }
+
+    .glow-1 {
+        top: -150px;
+        right: -200px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(198,255,0,0.2) 0%, transparent 70%);
+        animation: floatGlow1 25s ease-in-out infinite;
+    }
+
+    .glow-2 {
+        bottom: -180px;
+        left: -180px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+        animation: floatGlow2 30s ease-in-out infinite;
+    }
+
+    .glow-3 {
+        top: 30%;
+        left: 10%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+        animation: floatGlow3 35s ease-in-out infinite;
+    }
+
+    @keyframes floatGlow1 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(120px, -80px) scale(1.1); }
+    }
+
+    @keyframes floatGlow2 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(-100px, 100px) scale(1.05); }
+    }
+
+    @keyframes floatGlow3 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(50px, -50px) scale(1.08); }
+    }
+
+    /* تأثير shimmer خفيف */
+    .shimmer {
+        position: absolute;
+        top: 0;
+        left: -50%;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(120deg, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.05) 70%);
+        animation: shimmerMove 20s linear infinite;
+    }
+
+    @keyframes shimmerMove {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--dark-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+        }
+
+        .chart-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        /* CEO Level */
+        .ceo-level {
+            margin-bottom: 2rem;
+        }
+
+        .org-box {
+            background: var(--dark-green);
+            color: white;
+            padding: 1.5rem 3rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            min-width: 200px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .org-box.ceo {
+            background: var(--dark-green);
+        }
+
+        .org-box.empty {
+            background: white;
+            border: 2px solid var(--border-gray);
+            color: var(--text-gray);
+            min-height: 60px;
+        }
+
+        /* Vertical Lines */
+        .v-line {
+            width: 2px;
+            height: 40px;
+            background: var(--border-gray);
+            margin: 0 auto;
+        }
+
+        /* Deputy Level */
+        .deputy-level {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .deputy-box {
+            background: white;
+            border: 2px solid var(--border-gray);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-gray);
+            min-width: 150px;
+        }
+
+        /* Horizontal connector */
+        .h-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin: 1rem 0;
+        }
+
+        .h-line {
+            height: 2px;
+            background: var(--border-gray);
+            flex: 1;
+        }
+
+        .corner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-gray);
+            border-bottom: none;
+            border-left: none;
+        }
+
+        /* Grid Levels */
+        .grid-level {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .grid-level-3 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .grid-level-4 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .bottom-level {
+            display: flex;
+            justify-content: center;
+            gap: 8rem;
+            width: 100%;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            
+            .chart-container {
+                box-shadow: none;
+            }
+
+            .page-header {
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .grid-level, .grid-level-3, .grid-level-4 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .chart-container {
+                padding: 1.5rem;
+            }
+
+            .grid-level, .grid-level-3, .grid-level-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .bottom-level {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+            }
+
+            .org-box {
+                padding: 1rem 1.5rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        .print-btn {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: var(--accent-lime);
+            color: var(--dark-green);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(198, 255, 0, 0.3);
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .print-btn:hover {
+            background: #d4ff33;
+            transform: translateY(-2px);
+        }
+
+        @media print {
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn" onclick="window.print()">🖨️ طباعة الهيكل</button>
+
+    <div class="page-header">
+        <h1 class="page-title">صفحة الهيكل التنظيمي التدريبي</h1>
+        <p class="page-subtitle">مثال للهيكل وسيتم إضافة البيانات لاحقاً</p>
+    </div>
+
+    <div class="chart-container">
+        <div class="org-chart">
+            <!-- CEO Level -->
+            <div class="ceo-level">
+                <div class="org-box ceo">الرئيس التنفيذي</div>
+            </div>
+
+            <div class="v-line"></div>
+
+            <!-- Deputy Level -->
+            <div class="deputy-level">
+                <div class="deputy-box">نائب الرئيس</div>
+            </div>
+
+            <div class="v-line"></div>
+
+            <!-- Horizontal Connector Line -->
+            <div class="h-connector" style="width: 90%;">
+                <div class="h-line"></div>
+            </div>
+
+            <!-- Level 2 - First Row (6 boxes) -->
+            <div class="grid-level">
+                <div class="org-box empty"></div>
+                <div class="org-box empty"></div>
+                <div class="org-box empty"></div>
+                <div class="org-box empty"></div>
+                <div class="org-box empty"></div>
+                <div class="org-box empty"></div>
+            </div>
+
+            <!-- Vertical Lines for Level 2 -->
+            <div class="grid-level">
+                <div class="v-line"></div>
+                <div class="v-line"></div>
+                <div class="v-line"></div>
+                <div class="v-line"></div>
+                <div class="v-line"></div>
+                <div class="v-line"></div>
+            </div>
+
+            <!-- Level 3 - Second Row (6 boxes) -->
+            <div class="grid-level-3">
+                <div class="org-box empty"></div>
+                <div class="org-box empty"></div>
+                <div class="org-box empty"></div>
+                <div class="org-box empty"></div>
+                <div class="org-box empty"></div>
+                <div class="org-box empty"></div>
+            </div>
+
+            <!-- Vertical Lines for Level 3 -->
+            <div class="grid-level-3">
+                <div class="v-line"></div>
+                <div class="v-line"></div>
+                <div class="v-line"></div>
+                <div class="v-line"></div>
+                <div class="v-line"></div>
+                <div class="v-line"></div>
+            </div>
+
+            <!-- Level 4 - Third Row (6 boxes) -->
+            <div class="grid-level-4">
+                <div class="org-box empty"></div>
+                <div class="org-box empty"></div>
+                <div class="org-box empty"></div>
+                <div class="org-box empty"></div>
+                <div class="org-box empty"></div>
+                <div class="org-box empty"></div>
+            </div>
+
+            <!-- Vertical Lines to Bottom -->
+            <div style="display: flex; justify-content: center; gap: 8rem; width: 100%;">
+                <div class="v-line"></div>
+                <div class="v-line"></div>
+            </div>
+
+            <!-- Bottom Level (2 boxes) -->
+            <div class="bottom-level">
+                <div class="org-box empty"></div>
+                <div class="org-box empty"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add interactivity - click to edit boxes
+        document.querySelectorAll('.org-box.empty').forEach(box => {
+            box.addEventListener('click', function() {
+                const currentText = this.textContent.trim();
+                const newText = prompt('أدخل النص:', currentText);
+                if (newText !== null && newText.trim() !== '') {
+                    this.textContent = newText;
+                    this.style.background = 'white';
+                    this.style.color = '#374151';
+                }
+            });
+        });
+
+        // Double click to clear
+        document.querySelectorAll('.org-box.empty').forEach(box => {
+            box.addEventListener('dblclick', function() {
+                this.textContent = '';
+            });
+        });
+    </script>
+</body>
+</html>

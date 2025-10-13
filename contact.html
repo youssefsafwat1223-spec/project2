@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مجموعة التدريب التنفيذي - الصفحة الرئيسية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --dark-green: #0a3d2e;
+        --medium-green: #1a5c47;
+        --light-green: #2a7a5f;
+        --accent-lime: hsl(73, 98%, 49%);
+        --accent-gold: #FFD700;
+        --white: #ffffff;
+        --light-gray: #f5f5f5;
+        --text-gray: #9ca3af;
+    }
+
+    body {
+        font-family: 'Cairo', sans-serif;
+        direction: rtl;
+        overflow-x: hidden;
+        background: var(--dark-green);
+        color: var(--white);
+    }
+
+    /* الخلفية المائلة */
+    .diagonal-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(135deg, 
+            var(--dark-green) 30%,
+            var(--medium-green) 60%,
+            var(--light-green) 100%
+        );
+        overflow: hidden;
+    }
+
+    /* خطوط مائلة ناعمة */
+    .diagonal-lines {
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background-image: repeating-linear-gradient(
+            45deg,
+            rgba(198,255,0,0.02),
+            rgba(198,255,0,0.02) 35px,
+            rgba(198,255,0,0.05) 36px
+        );
+        animation: moveDiagonal 40s linear infinite;
+        opacity: 0.7;
+    }
+
+    @keyframes moveDiagonal {
+        0% { transform: translate(0, 0) rotate(0deg); }
+        50% { transform: translate(50px, 50px) rotate(1deg); }
+        100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    /* التوهجات المتعددة */
+    .glow-effect {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.6;
+    }
+
+    .glow-1 {
+        top: -150px;
+        right: -200px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(198,255,0,0.2) 0%, transparent 70%);
+        animation: floatGlow1 25s ease-in-out infinite;
+    }
+
+    .glow-2 {
+        bottom: -180px;
+        left: -180px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+        animation: floatGlow2 30s ease-in-out infinite;
+    }
+
+    .glow-3 {
+        top: 30%;
+        left: 10%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+        animation: floatGlow3 35s ease-in-out infinite;
+    }
+
+    @keyframes floatGlow1 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(120px, -80px) scale(1.1); }
+    }
+
+    @keyframes floatGlow2 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(-100px, 100px) scale(1.05); }
+    }
+
+    @keyframes floatGlow3 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(50px, -50px) scale(1.08); }
+    }
+
+    /* تأثير shimmer خفيف */
+    .shimmer {
+        position: absolute;
+        top: 0;
+        left: -50%;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(120deg, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.05) 70%);
+        animation: shimmerMove 20s linear infinite;
+    }
+
+    @keyframes shimmerMove {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 61, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(198, 255, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--accent-lime);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-green);
+            font-weight: 900;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-lime);
+        }
+
+        .header-btn {
+            background: var(--accent-lime);
+            border: none;
+            color: var(--dark-green);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        /* Hero */
+        .page-hero {
+            padding: 12rem 2rem 6rem;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 4.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 4rem 2rem 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3rem;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(198, 255, 0, 0.1);
+            border-radius: 30px;
+            padding: 3rem;
+        }
+
+        .info-title {
+            font-size: 2rem;
+            color: var(--accent-lime);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(198, 255, 0, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            background: rgba(198, 255, 0, 0.1);
+            transform: translateX(-5px);
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-lime);
+            color: var(--dark-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .info-details h4 {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .info-details p {
+            color: var(--text-gray);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(198, 255, 0, 0.1);
+            border: 1px solid rgba(198, 255, 0, 0.2);
+            color: var(--accent-lime);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent-lime);
+            color: var(--dark-green);
+            transform: translateY(-5px);
+        }
+
+        /* Contact Form */
+        .contact-form-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(198, 255, 0, 0.1);
+            border-radius: 30px;
+            padding: 3rem;
+        }
+
+        .form-title {
+            font-size: 2rem;
+            color: var(--accent-lime);
+            margin-bottom: 2rem;
+            font-weight: 800;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(198, 255, 0, 0.2);
+            border-radius: 15px;
+            color: var(--white);
+            font-size: 1rem;
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--accent-lime);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-input::placeholder, .form-textarea::placeholder {
+            color: var(--text-gray);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.3rem;
+            background: var(--accent-lime);
+            color: var(--dark-green);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .submit-btn:hover {
+            background: #d4ff33;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(198, 255, 0, 0.4);
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .map-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(198, 255, 0, 0.1);
+            border-radius: 30px;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--medium-green), var(--light-green));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        /* Branches Section */
+        .branches-section {
+            padding: 4rem 2rem 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .branch-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(198, 255, 0, 0.1);
+            border-radius: 25px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .branch-card:hover {
+            background: rgba(198, 255, 0, 0.1);
+            border-color: var(--accent-lime);
+            transform: translateY(-10px);
+        }
+
+        .branch-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .branch-name {
+            font-size: 1.8rem;
+            color: var(--accent-lime);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .branch-info {
+            color: var(--text-gray);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .branch-info p {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .branch-info i {
+            color: var(--accent-lime);
+            width: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(198, 255, 0, 0.1);
+            text-align: center;
+            color: var(--text-gray);
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            position: fixed;
+            top: 100px;
+            right: 50%;
+            transform: translateX(50%);
+            background: var(--accent-lime);
+            color: var(--dark-green);
+            padding: 1.5rem 3rem;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 40px rgba(198, 255, 0, 0.4);
+            z-index: 2000;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateX(50%) translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(50%) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .branches-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="diagonal-bg">
+        <div class="diagonal-lines"></div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+        ✓ تم إرسال رسالتك بنجاح! سنتواصل معك قريباً
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">TE</div>
+                <span>مجموعة التدريب التنفيذي</span>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="courses.html">الدورات</a></li>
+                    <li><a href="executives.html">المدراء</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="header-btn">تواصل معنا</a>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1 class="page-title">تواصل معنا</h1>
+        <p class="page-subtitle">نسعد بتواصلك معنا.. فريقنا جاهز للإجابة على استفساراتك</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-grid">
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h2 class="info-title">معلومات التواصل</h2>
+                
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="info-details">
+                        <h4>العنوان</h4>
+                        <p>طريق الملك فهد، حي العليا<br>الرياض 12211<br>المملكة العربية السعودية</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-phone"></i></div>
+                    <div class="info-details">
+                        <h4>الهاتف</h4>
+                        <p>الخط الساخن: 920000000<br>هاتف: +966 11 XXX XXXX<br>واتساب: +966 5X XXX XXXX</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="info-details">
+                        <h4>البريد الإلكتروني</h4>
+                        <p>العام: info@company.sa<br>الدعم: support@company.sa<br>المبيعات: sales@company.sa</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-clock"></i></div>
+                    <div class="info-details">
+                        <h4>أوقات العمل</h4>
+                        <p>الأحد - الخميس: 8:00 ص - 5:00 م<br>الجمعة - السبت: مغلق</p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-container">
+                <h2 class="form-title">أرسل لنا رسالة</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label">الاسم الكامل *</label>
+                        <input type="text" class="form-input" placeholder="أدخل اسمك الكامل" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">البريد الإلكتروني *</label>
+                        <input type="email" class="form-input" placeholder="example@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">رقم الجوال *</label>
+                        <input type="tel" class="form-input" placeholder="+966 XX XXX XXXX" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">الموضوع *</label>
+                        <select class="form-select" required>
+                            <option value="">اختر الموضوع</option>
+                            <option value="inquiry">استفسار عام</option>
+                            <option value="course">الاستفسار عن دورة</option>
+                            <option value="partnership">شراكة</option>
+                            <option value="complaint">شكوى</option>
+                            <option value="suggestion">اقتراح</option>
+                            <option value="support">دعم فني</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">الرسالة *</label>
+                        <textarea class="form-textarea" placeholder="اكتب رسالتك هنا..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <span>إرسال الرسالة</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="section-header">
+            <h2 class="section-title">موقعنا على الخريطة</h2>
+        </div>
+        <div class="map-container">
+            <div class="map-placeholder">
+                🗺️ خريطة الموقع
+            </div>
+        </div>
+    </section>
+
+    <!-- Branches -->
+    <section class="branches-section">
+        <div class="section-header">
+            <h2 class="section-title">فروعنا</h2>
+        </div>
+        <div class="branches-grid">
+            <div class="branch-card">
+                <div class="branch-icon">🏢</div>
+                <h3 class="branch-name">فرع الرياض (المقر الرئيسي)</h3>
+                <div class="branch-info">
+                    <p><i class="fas fa-map-marker-alt"></i> طريق الملك فهد، حي العليا</p>
+                    <p><i class="fas fa-phone"></i> 011-XXX-XXXX</p>
+                    <p><i class="fas fa-envelope"></i> riyadh@company.sa</p>
+                </div>
+            </div>
+
+            <div class="branch-card">
+                <div class="branch-icon">🏢</div>
+                <h3 class="branch-name">فرع جدة</h3>
+                <div class="branch-info">
+                    <p><i class="fas fa-map-marker-alt"></i> طريق المدينة، حي الروضة</p>
+                    <p><i class="fas fa-phone"></i> 012-XXX-XXXX</p>
+                    <p><i class="fas fa-envelope"></i> jeddah@company.sa</p>
+                </div>
+            </div>
+
+            <div class="branch-card">
+                <div class="branch-icon">🏢</div>
+                <h3 class="branch-name">فرع الدمام</h3>
+                <div class="branch-info">
+                    <p><i class="fas fa-map-marker-alt"></i> شارع الملك عبدالله، حي الفيصلية</p>
+                    <p><i class="fas fa-phone"></i> 013-XXX-XXXX</p>
+                    <p><i class="fas fa-envelope"></i> dammam@company.sa</p>
+                </div>
+            </div>
+
+            <div class="branch-card">
+                <div class="branch-icon">🏗️</div>
+                <h3 class="branch-name">فرع مكة (قريباً)</h3>
+                <div class="branch-info">
+                    <p><i class="fas fa-clock"></i> قيد الإنشاء</p>
+                    <p><i class="fas fa-calendar"></i> الافتتاح: Q2 2025</p>
+                    <p><i class="fas fa-info-circle"></i> للاستفسار: info@company.sa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 مجموعة التدريب التنفيذي. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            const successMsg = document.getElementById('successMessage');
+            successMsg.style.display = 'block';
+            
+            // Reset form
+            this.reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 5000);
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.info-item, .branch-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

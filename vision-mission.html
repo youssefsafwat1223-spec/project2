@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مجموعة التدريب التنفيذي - الصفحة الرئيسية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --dark-green: #0a3d2e;
+        --medium-green: #1a5c47;
+        --light-green: #2a7a5f;
+        --accent-lime: hsl(73, 98%, 49%);
+        --accent-gold: #FFD700;
+        --white: #ffffff;
+        --light-gray: #f5f5f5;
+        --text-gray: #9ca3af;
+    }
+
+    body {
+        font-family: 'Cairo', sans-serif;
+        direction: rtl;
+        overflow-x: hidden;
+        background: var(--dark-green);
+        color: var(--white);
+    }
+
+    /* الخلفية المائلة */
+    .diagonal-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(135deg, 
+            var(--dark-green) 30%,
+            var(--medium-green) 60%,
+            var(--light-green) 100%
+        );
+        overflow: hidden;
+    }
+
+    /* خطوط مائلة ناعمة */
+    .diagonal-lines {
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background-image: repeating-linear-gradient(
+            45deg,
+            rgba(198,255,0,0.02),
+            rgba(198,255,0,0.02) 35px,
+            rgba(198,255,0,0.05) 36px
+        );
+        animation: moveDiagonal 40s linear infinite;
+        opacity: 0.7;
+    }
+
+    @keyframes moveDiagonal {
+        0% { transform: translate(0, 0) rotate(0deg); }
+        50% { transform: translate(50px, 50px) rotate(1deg); }
+        100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    /* التوهجات المتعددة */
+    .glow-effect {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.6;
+    }
+
+    .glow-1 {
+        top: -150px;
+        right: -200px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(198,255,0,0.2) 0%, transparent 70%);
+        animation: floatGlow1 25s ease-in-out infinite;
+    }
+
+    .glow-2 {
+        bottom: -180px;
+        left: -180px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+        animation: floatGlow2 30s ease-in-out infinite;
+    }
+
+    .glow-3 {
+        top: 30%;
+        left: 10%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+        animation: floatGlow3 35s ease-in-out infinite;
+    }
+
+    @keyframes floatGlow1 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(120px, -80px) scale(1.1); }
+    }
+
+    @keyframes floatGlow2 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(-100px, 100px) scale(1.05); }
+    }
+
+    @keyframes floatGlow3 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(50px, -50px) scale(1.08); }
+    }
+
+    /* تأثير shimmer خفيف */
+    .shimmer {
+        position: absolute;
+        top: 0;
+        left: -50%;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(120deg, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.05) 70%);
+        animation: shimmerMove 20s linear infinite;
+    }
+
+    @keyframes shimmerMove {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+        /* Header - same as other pages */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 61, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(198, 255, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--accent-lime);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-green);
+            font-weight: 900;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-lime);
+        }
+
+        .header-btn {
+            background: transparent;
+            border: 2px solid var(--accent-lime);
+            color: var(--accent-lime);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .header-btn:hover {
+            background: var(--accent-lime);
+            color: var(--dark-green);
+        }
+
+        /* Hero */
+        .page-hero {
+            padding: 12rem 2rem 6rem;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 4.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Vision Mission Cards */
+        .vm-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .vm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .vm-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(198, 255, 0, 0.1);
+            border-radius: 30px;
+            padding: 4rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vm-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(198, 255, 0, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .vm-card:hover {
+            background: rgba(198, 255, 0, 0.1);
+            border-color: var(--accent-lime);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(198, 255, 0, 0.3);
+        }
+
+        .vm-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .vm-icon {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .vm-title {
+            font-size: 3rem;
+            color: var(--accent-lime);
+            margin-bottom: 2rem;
+            font-weight: 900;
+        }
+
+        .vm-text {
+            font-size: 1.4rem;
+            line-height: 2;
+            color: var(--text-gray);
+            text-align: justify;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 4rem 2rem;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+        }
+
+        .values-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(198, 255, 0, 0.1);
+            border-radius: 25px;
+            padding: 3rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .value-card:hover {
+            background: rgba(198, 255, 0, 0.1);
+            border-color: var(--accent-lime);
+            transform: translateY(-15px) scale(1.05);
+        }
+
+        .value-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .value-title {
+            font-size: 1.8rem;
+            color: var(--accent-lime);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .value-desc {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Goals Section */
+        .goals-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+        }
+
+        .goal-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(198, 255, 0, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .goal-card:hover {
+            background: rgba(198, 255, 0, 0.1);
+            border-color: var(--accent-lime);
+            transform: translateX(-10px);
+        }
+
+        .goal-number {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-lime);
+            color: var(--dark-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        .goal-content h3 {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .goal-content p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(198, 255, 0, 0.1);
+            text-align: center;
+            color: var(--text-gray);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .vm-grid, .goals-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .vm-card, .goal-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="diagonal-bg">
+        <div class="diagonal-lines"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">TE</div>
+                <span>مجموعة التدريب التنفيذي</span>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="courses.html">الدورات</a></li>
+                    <li><a href="executives.html">المدراء</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="header-btn">تواصل معنا</a>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1 class="page-title">رؤيتنا ورسالتنا</h1>
+        <p class="page-subtitle">قيمنا وأهدافنا الاستراتيجية التي تقودنا نحو التميز</p>
+    </section>
+
+    <!-- Vision & Mission Cards -->
+    <section class="vm-section">
+        <div class="vm-grid">
+            <div class="vm-card">
+                <div class="vm-content">
+                    <span class="vm-icon">🎯</span>
+                    <h2 class="vm-title">رؤيتنا</h2>
+                    <p class="vm-text">
+                        أن نكون المجموعة الرائدة في التدريب والتطوير المؤسسي على مستوى المملكة، 
+                        ونساهم في تحقيق رؤية المملكة 2030 من خلال بناء القدرات وتطوير الكفاءات 
+                        الوطنية المتميزة القادرة على قيادة التغيير والابتكار في مختلف القطاعات 
+                        الاقتصادية والاجتماعية.
+                    </p>
+                </div>
+            </div>
+
+            <div class="vm-card">
+                <div class="vm-content">
+                    <span class="vm-icon">🚀</span>
+                    <h2 class="vm-title">رسالتنا</h2>
+                    <p class="vm-text">
+                        نلتزم بتقديم برامج تدريبية عالية الجودة ومبتكرة، وبناء بيئة تعليمية محفزة، 
+                        وتطوير حلول تدريبية مخصصة تلبي احتياجات السوق وتساهم في التنمية المستدامة 
+                        من خلال شراكات استراتيجية مع أفضل المؤسسات المحلية والدولية، مع الالتزام 
+                        بأعلى معايير الجودة والتميز.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="section-header">
+            <h2 class="section-title">قيمنا الجوهرية</h2>
+            <p class="section-desc">المبادئ التي نؤمن بها ونعمل على تحقيقها يومياً</p>
+        </div>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">⭐</div>
+                <h3 class="value-title">التميز</h3>
+                <p class="value-desc">نسعى للتميز في كل ما نقدمه من برامج وخدمات تدريبية، ونلتزم بتقديم أفضل تجربة تعليمية لمتدربينا</p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h3 class="value-title">الشراكة</h3>
+                <p class="value-desc">نؤمن بقوة العمل المشترك والشراكات الاستراتيجية مع أفضل المؤسسات المحلية والدولية</p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">💡</div>
+                <h3 class="value-title">الابتكار</h3>
+                <p class="value-desc">نشجع التفكير الإبداعي والحلول المبتكرة في تصميم وتقديم البرامج التدريبية</p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">🎯</div>
+                <h3 class="value-title">الجودة</h3>
+                <p class="value-desc">الجودة أساس عملنا ومعيار نجاحنا، نلتزم بأعلى معايير الجودة في جميع خدماتنا</p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">🌱</div>
+                <h3 class="value-title">التطوير المستمر</h3>
+                <p class="value-desc">نستثمر في تطوير كوادرنا وأنظمتنا باستمرار لمواكبة أحدث التطورات في مجال التدريب</p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">🇸🇦</div>
+                <h3 class="value-title">الولاء الوطني</h3>
+                <p class="value-desc">نفخر بانتمائنا الوطني ومساهمتنا الفعالة في تحقيق رؤية المملكة 2030</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals Section -->
+    <section class="goals-section">
+        <div class="section-header">
+            <h2 class="section-title">أهدافنا الاستراتيجية</h2>
+            <p class="section-desc">خارطة الطريق نحو التميز والريادة</p>
+        </div>
+        <div class="goals-grid">
+            <div class="goal-card">
+                <div class="goal-number">1</div>
+                <div class="goal-content">
+                    <h3>تطوير البرامج التدريبية</h3>
+                    <p>تصميم وتطوير برامج تدريبية متقدمة تلبي احتياجات السوق المتغيرة وتواكب أحدث التطورات العالمية</p>
+                </div>
+            </div>
+
+            <div class="goal-card">
+                <div class="goal-number">2</div>
+                <div class="goal-content">
+                    <h3>تحقيق الاعتماد الأكاديمي</h3>
+                    <p>الحصول على المزيد من الاعتمادات المحلية والدولية المرموقة لضمان جودة برامجنا</p>
+                </div>
+            </div>
+
+            <div class="goal-card">
+                <div class="goal-number">3</div>
+                <div class="goal-content">
+                    <h3>التوسع والانتشار</h3>
+                    <p>افتتاح فروع جديدة في مختلف مناطق المملكة للوصول إلى أكبر عدد من المستفيدين</p>
+                </div>
+            </div>
+
+            <div class="goal-card">
+                <div class="goal-number">4</div>
+                <div class="goal-content">
+                    <h3>بناء الشراكات الاستراتيجية</h3>
+                    <p>تعزيز التعاون مع أفضل الجامعات والمؤسسات العالمية لنقل المعرفة وأفضل الممارسات</p>
+                </div>
+            </div>
+
+            <div class="goal-card">
+                <div class="goal-number">5</div>
+                <div class="goal-content">
+                    <h3>التحول الرقمي</h3>
+                    <p>تطوير منصات تعليمية رقمية متقدمة وتوفير برامج تدريبية عن بعد بأعلى جودة</p>
+                </div>
+            </div>
+
+            <div class="goal-card">
+                <div class="goal-number">6</div>
+                <div class="goal-content">
+                    <h3>تطوير الكوادر الوطنية</h3>
+                    <p>الاستثمار في تطوير المدربين والموظفين السعوديين وتأهيلهم وفق أعلى المعايير الدولية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 مجموعة التدريب التنفيذي. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.vm-card, .value-card, .goal-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Pause animation on hover
+        document.querySelectorAll('.value-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', function() {
+                this.style.animationPlayState = 'paused';
+            });
+            icon.addEventListener('mouseleave', function() {
+                this.style.animationPlayState = 'running';
+            });
+        });
+    </script>
+</body>
+</html>="about.html">من نحن</a></li>
+                    <li><a href
